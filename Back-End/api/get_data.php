@@ -74,6 +74,50 @@ if ($result_danh_mucs->num_rows > 0) {
     }
 }
 
+// Truy vấn SQL để lấy dữ liệu bảng don_hangs
+$sql_don_hangs = "SELECT * FROM don_hangs";
+$result_don_hangs = $conn->query($sql_don_hangs);
+// Lưu dữ liệu bảng don_hangs
+$don_hangs = [];
+if ($result_don_hangs->num_rows > 0) {
+    while ($row = $result_don_hangs->fetch_assoc()) {
+        $don_hangs[] = $row;
+    }
+}
+
+// Truy vấn SQL để lấy dữ liệu bảng gio_hangs
+$sql_gio_hangs = "SELECT * FROM gio_hangs";
+$result_gio_hangs = $conn->query($sql_gio_hangs);
+// Lưu dữ liệu bảng gio_hangs
+$gio_hangs = [];
+if ($result_gio_hangs->num_rows > 0) {
+    while ($row = $result_gio_hangs->fetch_assoc()) {
+        $gio_hangs[] = $row;
+    }
+}
+
+// Truy vấn SQL để lấy dữ liệu bảng hinh_anh_san_phams
+$sql_hinh_anh_san_phams = "SELECT * FROM hinh_anh_san_phams";
+$result_hinh_anh_san_phams = $conn->query($sql_hinh_anh_san_phams);
+// Lưu dữ liệu bảng hinh_anh_san_phams
+$hinh_anh_san_phams = [];
+if ($result_hinh_anh_san_phams->num_rows > 0) {
+    while ($row = $result_hinh_anh_san_phams->fetch_assoc()) {
+        $hinh_anh_san_phams[] = $row;
+    }
+}
+
+// Truy vấn SQL để lấy dữ liệu bảng phuong_thuc_thanh_toans
+$sql_phuong_thuc_thanh_toans = "SELECT * FROM phuong_thuc_thanh_toans";
+$result_phuong_thuc_thanh_toans = $conn->query($sql_phuong_thuc_thanh_toans);
+// Lưu dữ liệu bảng phuong_thuc_thanh_toans
+$phuong_thuc_thanh_toans = [];
+if ($result_phuong_thuc_thanh_toans->num_rows > 0) {
+    while ($row = $result_phuong_thuc_thanh_toans->fetch_assoc()) {
+        $phuong_thuc_thanh_toans[] = $row;
+    }
+}
+
 // Truy vấn SQL để lấy dữ liệu bảng san_phams kèm đường dẫn ảnh tuyệt đối
 $sql_san_phams = "SELECT id, ten_san_pham, gia_san_pham, gia_khuyen_mai, so_luong, luot_xem, mo_ta, ngay_nhap, danh_muc_id, trang_thai, 
                   CONCAT('http://localhost/Wedsite_GShoe/Back-End/', hinh_anh) AS hinh_anh 
@@ -87,6 +131,28 @@ if ($result_san_phams->num_rows > 0) {
     }
 }
 
+// Truy vấn SQL để lấy dữ liệu bảng tai_khoans
+$sql_tai_khoans = "SELECT * FROM tai_khoans";
+$result_tai_khoans = $conn->query($sql_tai_khoans);
+// Lưu dữ liệu bảng tai_khoans
+$tai_khoans = [];
+if ($result_tai_khoans->num_rows > 0) {
+    while ($row = $result_tai_khoans->fetch_assoc()) {
+        $tai_khoans[] = $row;
+    }
+}
+
+// Truy vấn SQL để lấy dữ liệu bảng trang_thai_don_hangs
+$sql_trang_thai_don_hangs = "SELECT * FROM trang_thai_don_hangs";
+$result_trang_thai_don_hangs = $conn->query($sql_trang_thai_don_hangs);
+// Lưu dữ liệu bảng trang_thai_don_hangs
+$trang_thai_don_hangs = [];
+if ($result_trang_thai_don_hangs->num_rows > 0) {
+    while ($row = $result_trang_thai_don_hangs->fetch_assoc()) {
+        $trang_thai_don_hangs[] = $row;
+    }
+}
+
 // Thiết lập header trả về JSON
 header('Content-Type: application/json');
 
@@ -97,7 +163,13 @@ $data = [
     "chi_tiet_gio_hangs" => $chi_tiet_gio_hangs,
     "chuc_vus" => $chuc_vus,
     "danh_mucs" => $danh_mucs,
-    "san_phams" => $san_phams
+    "don_hangs" => $don_hangs,
+    "gio_hangs" => $gio_hangs,
+    "hinh_anh_san_phams" => $hinh_anh_san_phams,
+    "phuong_thuc_thanh_toans" => $phuong_thuc_thanh_toans,
+    "san_phams" => $san_phams,
+    "tai_khoans" => $tai_khoans,
+    "trang_thai_don_hangs" => $trang_thai_don_hangs,
 ];
 
 // Trả về dữ liệu dưới dạng JSON
