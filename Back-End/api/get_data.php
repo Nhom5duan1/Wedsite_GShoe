@@ -18,10 +18,10 @@ $conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
 if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
+
 // Truy vấn SQL để lấy dữ liệu bảng binh_luans
 $sql_binh_luans = "SELECT * FROM binh_luans";
 $result_binh_luans = $conn->query($sql_binh_luans);
-
 // Lưu dữ liệu bảng binh_luans
 $binh_luans = [];
 if ($result_binh_luans->num_rows > 0) {
@@ -30,10 +30,42 @@ if ($result_binh_luans->num_rows > 0) {
     }
 }
 
+// Truy vấn SQL để lấy dữ liệu bảng chi_tiet_don_hangs
+$sql_chi_tiet_don_hangs = "SELECT * FROM chi_tiet_don_hangs";
+$result_chi_tiet_don_hangs = $conn->query($sql_chi_tiet_don_hangs);
+// Lưu dữ liệu bảng chi_tiet_don_hangs
+$chi_tiet_don_hangs = [];
+if ($result_chi_tiet_don_hangs->num_rows > 0) {
+    while ($row = $result_chi_tiet_don_hangs->fetch_assoc()) {
+        $chi_tiet_don_hangs[] = $row;
+    }
+}
+
+// Truy vấn SQL để lấy dữ liệu bảng chi_tiet_gio_hangs
+$sql_chi_tiet_gio_hangs = "SELECT * FROM chi_tiet_gio_hangs";
+$result_chi_tiet_gio_hangs = $conn->query($sql_chi_tiet_gio_hangs);
+// Lưu dữ liệu bảng chi_tiet_gio_hangs
+$chi_tiet_gio_hangs = [];
+if ($result_chi_tiet_gio_hangs->num_rows > 0) {
+    while ($row = $result_chi_tiet_gio_hangs->fetch_assoc()) {
+        $chi_tiet_gio_hangs[] = $row;
+    }
+}
+
+// Truy vấn SQL để lấy dữ liệu bảng chuc_vus
+$sql_chuc_vus = "SELECT * FROM chuc_vus";
+$result_chuc_vus = $conn->query($sql_chuc_vus);
+// Lưu dữ liệu bảng chuc_vus
+$chuc_vus = [];
+if ($result_chuc_vus->num_rows > 0) {
+    while ($row = $result_chuc_vus->fetch_assoc()) {
+        $chuc_vus[] = $row;
+    }
+}
+
 // Truy vấn SQL để lấy dữ liệu bảng danh_mucs
 $sql_danh_mucs = "SELECT * FROM danh_mucs";
 $result_danh_mucs = $conn->query($sql_danh_mucs);
-
 // Lưu dữ liệu bảng danh_mucs
 $danh_mucs = [];
 if ($result_danh_mucs->num_rows > 0) {
@@ -47,7 +79,6 @@ $sql_san_phams = "SELECT id, ten_san_pham, gia_san_pham, gia_khuyen_mai, so_luon
                   CONCAT('http://localhost/Wedsite_GShoe/Back-End/', hinh_anh) AS hinh_anh 
                   FROM san_phams";
 $result_san_phams = $conn->query($sql_san_phams);
-
 // Lưu dữ liệu bảng san_phams
 $san_phams = [];
 if ($result_san_phams->num_rows > 0) {
@@ -62,6 +93,9 @@ header('Content-Type: application/json');
 // Tạo mảng kết quả kết hợp dữ liệu từ cả hai bảng
 $data = [
     "binh_luans" => $binh_luans,
+    "chi_tiet_don_hangs" => $chi_tiet_don_hangs,
+    "chi_tiet_gio_hangs" => $chi_tiet_gio_hangs,
+    "chuc_vus" => $chuc_vus,
     "danh_mucs" => $danh_mucs,
     "san_phams" => $san_phams
 ];
