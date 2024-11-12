@@ -18,6 +18,17 @@ $conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME, DB_PORT);
 if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
+// Truy vấn SQL để lấy dữ liệu bảng binh_luans
+$sql_binh_luans = "SELECT * FROM binh_luans";
+$result_binh_luans = $conn->query($sql_binh_luans);
+
+// Lưu dữ liệu bảng binh_luans
+$binh_luans = [];
+if ($result_binh_luans->num_rows > 0) {
+    while ($row = $result_binh_luans->fetch_assoc()) {
+        $binh_luans[] = $row;
+    }
+}
 
 // Truy vấn SQL để lấy dữ liệu bảng danh_mucs
 $sql_danh_mucs = "SELECT * FROM danh_mucs";
@@ -50,6 +61,7 @@ header('Content-Type: application/json');
 
 // Tạo mảng kết quả kết hợp dữ liệu từ cả hai bảng
 $data = [
+    "binh_luans" => $binh_luans,
     "danh_mucs" => $danh_mucs,
     "san_phams" => $san_phams
 ];
