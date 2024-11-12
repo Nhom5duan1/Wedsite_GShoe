@@ -19,26 +19,44 @@ if ($conn->connect_error) {
     die("Kết nối thất bại: " . $conn->connect_error);
 }
 
-// Truy vấn SQL để lấy dữ liệu sản phẩm kèm đường dẫn ảnh tuyệt đối
-$sql = "SELECT id, ten_san_pham, gia_san_pham, gia_khuyen_mai, so_luong, luot_xem, mo_ta, ngay_nhap, danh_muc_id, trang_thai, 
-        CONCAT('http://localhost/Wedsite_GShoe/Back-End/', hinh_anh) AS hinh_anh 
-        FROM san_phams";
-$result = $conn->query($sql);
+// Truy vấn SQL để lấy dữ liệu bảng danh_mucs
+$sql_danh_mucs = "SELECT * FROM danh_mucs";
+$result_danh_mucs = $conn->query($sql_danh_mucs);
+
+// Lưu dữ liệu bảng danh_mucs
+$danh_mucs = [];
+if ($result_danh_mucs->num_rows > 0) {
+    while ($row = $result_danh_mucs->fetch_assoc()) {
+        $danh_mucs[] = $row;
+    }
+}
+
+// Truy vấn SQL để lấy dữ liệu bảng san_phams kèm đường dẫn ảnh tuyệt đối
+$sql_san_phams = "SELECT id, ten_san_pham, gia_san_pham, gia_khuyen_mai, so_luong, luot_xem, mo_ta, ngay_nhap, danh_muc_id, trang_thai, 
+                  CONCAT('http://localhost/Wedsite_GShoe/Back-End/', hinh_anh) AS hinh_anh 
+                  FROM san_phams";
+$result_san_phams = $conn->query($sql_san_phams);
+
+// Lưu dữ liệu bảng san_phams
+$san_phams = [];
+if ($result_san_phams->num_rows > 0) {
+    while ($row = $result_san_phams->fetch_assoc()) {
+        $san_phams[] = $row;
+    }
+}
 
 // Thiết lập header trả về JSON
 header('Content-Type: application/json');
 
-// Chuyển dữ liệu thành JSON
-if ($result->num_rows > 0) {
-    $data = [];
-    while ($row = $result->fetch_assoc()) {
-        $data[] = $row;
-    }
-    echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-} else {
-    echo json_encode([], JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-}
+// Tạo mảng kết quả kết hợp dữ liệu từ cả hai bảng
+$data = [
+    "danh_mucs" => $danh_mucs,
+    "san_phams" => $san_phams
+];
+
+// Trả về dữ liệu dưới dạng JSON
+echo json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
 
 // Đóng kết nối
 $conn->close();
-// http://localhost/Wedsite_GShoe/Back-End/api/get_data.php đường dẫn api 
+?>
