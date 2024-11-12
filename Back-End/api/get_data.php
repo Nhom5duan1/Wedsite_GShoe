@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 }
 
 // Truy vấn SQL để lấy dữ liệu sản phẩm kèm đường dẫn ảnh tuyệt đối
-$sql = "SELECT id, ten_san_pham, gia_san_pham, so_luong, 
+$sql = "SELECT id, ten_san_pham, gia_san_pham, gia_khuyen_mai, so_luong, luot_xem, mo_ta, ngay_nhap, danh_muc_id, trang_thai, 
         CONCAT('http://localhost/Wedsite_GShoe/Back-End/', hinh_anh) AS hinh_anh 
         FROM san_phams";
 $result = $conn->query($sql);
