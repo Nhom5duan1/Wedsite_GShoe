@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 07, 2024 at 03:04 PM
+-- Generation Time: Nov 14, 2024 at 08:12 AM
 -- Server version: 8.0.30
 -- PHP Version: 8.1.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `xuong_db_wedsite-thu-cung`
+-- Database: `db_wedsite_gshoe`
 --
 
 -- --------------------------------------------------------
@@ -115,12 +115,8 @@ CREATE TABLE `danh_mucs` (
 --
 
 INSERT INTO `danh_mucs` (`id`, `ten_danh_muc`, `mo_ta`) VALUES
-(1, 'Chó ( Dog )', 'Các loại giống chó'),
-(2, 'Mèo ( Cat )', 'Các loại giống mèo'),
-(3, 'Chuột hamster', 'Chuột Hamster là loại thú cưng nhỏ nhắn được yêu thích bởi chiếc má phúng phính'),
-(4, 'Rồng đất – Iguana', 'Rồng Nam Mỹ'),
-(5, 'Sóc', 'Sóc bay Úc hay sóc bay Sugar Glider là một phân loài của loài thú có túi Petaurus breviceps có nguồn gốc từ bờ biển đông bắc nước Úc.'),
-(6, 'Thỏ', 'Thỏ là động vật có vú nhỏ được xếp vào họ Leporidue thuộc bộ Lagomorpha');
+(1, 'Nike', 'Giày Nike'),
+(2, 'Adidas', 'Giày Adidas');
 
 -- --------------------------------------------------------
 
@@ -179,24 +175,12 @@ CREATE TABLE `hinh_anh_san_phams` (
 --
 
 INSERT INTO `hinh_anh_san_phams` (`id`, `san_pham_id`, `link_hinh_anh`) VALUES
-(5, 2, './uploads/1722238976tải xuống (5).jpg'),
-(6, 2, './uploads/1722238976tải xuống (6).jpg'),
-(7, 2, './uploads/1722238976tải xuống (7).jpg'),
-(8, 3, './uploads/1723475525tải xuống (4).jpg'),
-(9, 3, './uploads/1723475529tải xuống (3).jpg'),
-(10, 3, './uploads/1723394215pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263.png'),
-(11, 4, './uploads/1723394290pngtree-cartoon-cat-cute-cat-hand-painted-cat-cat-cute-pet-png-image_449977.jpg'),
-(12, 4, './uploads/1723394290pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263 (1).png'),
-(13, 4, './uploads/1723394290pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263.png'),
 (14, 5, './uploads/1723394333pngtree-cartoon-cat-cute-cat-hand-painted-cat-cat-cute-pet-png-image_449977.jpg'),
 (15, 5, './uploads/1723394333pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263 (1).png'),
 (16, 5, './uploads/1723394333pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263.png'),
 (17, 6, './uploads/1723394490pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263 (1).png'),
 (18, 6, './uploads/1723394490pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263.png'),
 (19, 6, './uploads/1723394490tải xuống (1).jpg'),
-(20, 2, './uploads/1723477028Logo maker project.png'),
-(21, 2, './uploads/1723477036pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263 (1).png'),
-(22, 2, './uploads/1723477046Logo maker project (3).png'),
 (23, 7, './uploads/1723482105anh.jpg'),
 (24, 7, './uploads/1723482105Logo maker project (3).png'),
 (25, 7, './uploads/1723482105Logo maker project.png'),
@@ -229,7 +213,25 @@ INSERT INTO `hinh_anh_san_phams` (`id`, `san_pham_id`, `link_hinh_anh`) VALUES
 (52, 10, './uploads/1723558971tải xuống (3).jpg'),
 (53, 10, './uploads/1723558971tải xuống (4).jpg'),
 (54, 10, './uploads/1723558971tải xuống (5).jpg'),
-(55, 11, './uploads/1723558997pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263 (1).png');
+(55, 11, './uploads/1723558997pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263 (1).png'),
+(56, 13, './uploads/1731136592images.jpg'),
+(57, 13, './uploads/1731136604tải xuống.jpg'),
+(58, 13, './uploads/1731136616tải xuống (1).jpg'),
+(59, 13, './uploads/1731136626tải xuống (2).jpg'),
+(60, 13, './uploads/1731136635tải xuống (3).jpg'),
+(61, 14, './uploads/1731136889tải xuống.jpg'),
+(62, 14, './uploads/1731136889tải xuống (1).jpg'),
+(63, 14, './uploads/1731136889tải xuống (3).jpg'),
+(64, 14, './uploads/1731136889tải xuống (4).jpg'),
+(65, 15, './uploads/1731137868GW9196-1.webp'),
+(66, 15, './uploads/1731137868ID2949-1.webp'),
+(67, 15, './uploads/1731137868GW9198-1.webp'),
+(68, 15, './uploads/1731137868ID2970-1.webp'),
+(69, 16, './uploads/1731138238giay-the-thao-adidas-samba-adv-shoes-gz8477-mau-trang-xam-655b0abfc6248-20112023142903.webp'),
+(70, 16, './uploads/1731138238giay-the-thao-adidas-samba-adv-shoes-gz8477-mau-trang-xam-655b0abfc6b4a-20112023142903.webp'),
+(71, 16, './uploads/1731138238giay-the-thao-adidas-samba-adv-shoes-gz8477-mau-trang-xam-655b0abfc6e1f-20112023142903.webp'),
+(72, 16, './uploads/1731138238giay-the-thao-adidas-samba-adv-shoes-gz8477-mau-trang-xam-655b0abfc76f2-20112023142903.webp'),
+(73, 16, './uploads/1731138238giay-the-thao-adidas-samba-adv-shoes-gz8477-mau-trang-xam-655b0abfc7155-20112023142903.webp');
 
 -- --------------------------------------------------------
 
@@ -275,16 +277,10 @@ CREATE TABLE `san_phams` (
 --
 
 INSERT INTO `san_phams` (`id`, `ten_san_pham`, `gia_san_pham`, `gia_khuyen_mai`, `hinh_anh`, `so_luong`, `luot_xem`, `ngay_nhap`, `mo_ta`, `danh_muc_id`, `trang_thai`) VALUES
-(2, 'Chó lông dài', '11000000.00', '9000000.00', './uploads/1723395353Ảnh chụp màn hình 2024-07-25 234110.png', 1, 8, '2024-07-02', 'Mèo anh', 1, 1),
-(3, 'Chó cỏ', '1000000.00', '8000000.00', './uploads/1723481984anh.jpg', 1, 9, '2024-08-11', 'chó cỏ giống chó giữ nhà ', 1, 1),
-(4, 'Mèo anh', '2000000.00', NULL, './uploads/1723394290pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263 (1).png', 2, 5, '2024-08-12', '', 2, 1),
-(5, 'Chó Phú Quốc', '3000000.00', '1000000.00', './uploads/1723394333Logo maker project (3).png', 3, 6, '2024-08-06', '', 1, 1),
-(6, 'Chó Bug', '12313.00', NULL, './uploads/1723394490pngtree-cartoon-cat-cute-cat-hand-painted-cat-cat-cute-pet-png-image_449977.jpg', 123213, 10, '2024-08-09', '', 1, 1),
-(7, 'chó phốc', '12341242.00', '12242.00', './uploads/1723482105tải xuống (4).jpg', 12, 7, '2024-08-13', 'chó phốcchó phốcchó phốcchó phốcchó phốcchó phốc', 1, 1),
-(8, 'sdds', '2414.00', '124124.00', './uploads/1723558922Logo maker project (3).png', 1, 12, '2024-08-13', '', 2, 1),
-(9, '123', '1232.00', '1232.00', './uploads/1723558946tải xuống (2).jpg', 123, 123, '2024-08-28', '', 1, 1),
-(10, '123', '123.00', '12323.00', './uploads/1723558971anh.jpg', 123, 123, '2024-08-13', '', 4, 1),
-(11, '23123', '12323.00', '123213.00', './uploads/1723558997pngtree-favorite-cat-pet-shop-logo-cat-hand-drawn-graphics-png-image_4569263.png', 123, 1231, '2024-08-29', 'https://www.youtube.com/watch?v=TI-EBIc7fnE&list=PLuegt8mCyPRtC6eMIckpjIqlfkSRT9z41&index=1&t=5s', 5, 1);
+(13, 'Giày thể thao Nike Air Force 1', '2929000.00', '3000000.00', './uploads/1731136508AIR+FORCE+1+\'07.png', 10, 0, '2024-11-01', 'Nike Air Force 1 \'07 Men\'s Shoes', 1, 1),
+(14, 'Giày thể thao Nike Air Force 1', '2809000.00', '3000000.00', './uploads/1731136900tải xuống (2).jpg', 10, 0, '2024-11-02', 'Air Jordan 1 Low SE Older Kids\' Shoes', 1, 1),
+(15, 'Giày Sneaker Nam Adidas Grand Court Cloudfoam Comfort - Trắng', '1400000.00', '2000000.00', './uploads/1731137723GW9195-1.webp', 9, 0, '2024-11-01', 'Giày Sneaker Nam Adidas Grand Court Cloudfoam Comfort - Trắng', 2, 1),
+(16, 'Giày Thể Thao Adidas Samba Adv Shoes GZ8477 IE3975', '3550000.00', '4200000.00', './uploads/1731138124giay-the-thao-adidas-samba-adv-shoes-gz8477-mau-trang-xam-655b0abfc6757-20112023142903.webp', 5, 0, '2024-11-03', 'Giày Thể Thao Adidas Samba Adv Shoes GZ8477 IE3975 Màu Trắng Xám Size 36.5', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -471,7 +467,7 @@ ALTER TABLE `gio_hangs`
 -- AUTO_INCREMENT for table `hinh_anh_san_phams`
 --
 ALTER TABLE `hinh_anh_san_phams`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT for table `phuong_thuc_thanh_toans`
@@ -483,7 +479,7 @@ ALTER TABLE `phuong_thuc_thanh_toans`
 -- AUTO_INCREMENT for table `san_phams`
 --
 ALTER TABLE `san_phams`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `tai_khoans`
